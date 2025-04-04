@@ -2,8 +2,8 @@
 const express = require('express')
 const mongoose = require('mongoose');
 require('dotenv').config()
-const User = require('./model/User');
-const bcrypt = require('bcrypt')
+const User = require('./models/User');
+const bcrypt = require('bcryptjs')
 
 // middleware
 const PORT=3028
@@ -11,7 +11,7 @@ const app = express()
 app.use(express.json())
 
 // connecting the mongodb atlas
-mangoose.connect (process.env.MONGO_URL).then(
+mongoose.connect (process.env.MONGO_URL).then(
     ()=>console.log("DB connected Successfully...")
 ).catch(
     (err)=>console.log("DB connection failed...")
